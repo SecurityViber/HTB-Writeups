@@ -1,34 +1,24 @@
-# Noxious 
+# Sherlock: Noxious
 
+## Key Concepts
 
-## General Notes 
+- **LLMNR** (Link-Local Multicast Name Resolution) — Port 5355/UDP. Used to resolve hostnames on local networks when DNS fails; exploitable via poisoning attacks.
+- **NTLM** (NT LAN Manager) — Challenge-response authentication protocol used in Active Directory. Capturing the NTLM challenge + proof hash allows offline cracking.
+- **NTLMSSP** (NT LAN Manager Security Support Provider) — Binary message protocol facilitating NTLM challenge-response authentication.
 
+## Tools & Commands
 
-- LLMNR - Link-Local Multicast Name Resolution 
-  - Port 5355
-- NTLM -> Network LAN Manager
-  - Is a Challenge and Response authentication protocol used to authenticate a client to a resource on an Active Directory Domain. 
-  - If you get the ntlm challenge and the ntlm proof you should be able to try to crack it in Hashcat. 
-- Hashcat -a0 -m5600 hashfile.txt rockyouwordlist.txt 
+Crack a captured NTLMv2 hash:
+```sh
+hashcat -a 0 -m 5600 hashfile.txt /usr/share/wordlists/rockyou.txt
+```
 
+## Wireshark Tips
 
+- Filter for LLMNR traffic: `udp.port == 5355`
+- Use **Statistics → Endpoints** to identify the most active hosts
 
+## Key Learnings
 
- 
-  
-
-
-
-
-
-Learnings:
-  - When checking for dhcp and a specific IP you can figure out when the IP was assigned to a specific host -> Getting hostname etc. 
-  - NTLMSSP -> NT LAN Manager Security Support Provider -> Binary message protocol to facilitate NTLM challenge-response authentication. 
-
-In wireshark you can filter for:
-  - Port 5355 and UDP  (udp.port == 5355)
-  - Using Statistics -> Endpoints to get requency 
-
-
-
-9291	.921154	fe80::2068:fe84:5fc8:efb7	fe80::7994:1860:711:c243	SMB2	412	Session Setup Response, Error: STATUS_MORE_PROCESSING_REQUIRED, NTLMSSP_CHALLENGE
+- DHCP traffic can reveal when an IP was assigned to a host, helping correlate hostname and IP at a given point in time.
+- Look for `SMB2 Session Setup Response` packets with `NTLMSSP_CHALLENGE` — these contain the hash material needed for cracking.

@@ -1,0 +1,9 @@
+[waf-detect:nginxgeneric] [http] [info] http://precious.htb
+[CVE-2023-48795] [javascript] [medium] precious.htb:22 ["Vulnerable to Terrapin"]
+[ssh-auth-methods] [javascript] [info] precious.htb:22 ["["publickey","password"]"]
+[ssh-password-auth] [javascript] [info] precious.htb:22
+[ssh-server-enumeration] [javascript] [info] precious.htb:22 ["SSH-2.0-OpenSSH_8.4p1 Debian-5+deb11u1"]
+[ssh-sha1-hmac-algo] [javascript] [info] precious.htb:22
+[xss-deprecated-header] [http] [info] http://precious.htb ["1; mode=block"]
+[nginx-eol:version] [http] [info] http://precious.htb ["1.18.0"]
+[nginx-version] [http] [info] http://precious.htb ["nginx/1.18.0"]
