@@ -1,25 +1,23 @@
-# Reaper Write-Up
+# Sherlock: Reaper
 
+## Overview
 
-## First ideas 
+Network forensics challenge — analyze a packet capture in Wireshark.
 
-Search in Wireshark for some useful information 
+## Protocol Reference
 
+| Protocol | Description |
+|----------|-------------|
+| NBNS | NetBIOS Name Service — translates human-readable names to IP addresses (similar to DNS) |
+| IGMP | Internet Group Management Protocol — used for multicast group management |
+| ICMP | Internet Control Message Protocol — used for diagnostics and error reporting |
+| ARP | Address Resolution Protocol — maps IP addresses to MAC addresses |
+| MDNS | Multicast DNS — resolves hostnames on small networks without a DNS server |
+| SSDP | Simple Service Discovery Protocol — allows networked devices to discover each other |
 
+## DHCP Flow
 
-## General Notes 
-
-About Protocols:
-  - NBNS - NetBIOS Name Service -> Similar to DNS translates human-readable names to ip addresss
-  - IGMP - Internet Group Management Protocol (used for multicasting)
-  - ICMP - Internet Control Message Protocol
-  - ARP - Address Resolution Protocol -> Used to discover linked layer addresses such as MAC
-  - MDNS - Multicast DNS -> Used for resolving host names to IP addresses within small networks that do not include DNS server. 
-  - SSDP - Simple Service Discovery Protocol -> used for networked devices to communicate and discover each other 
-  - DHCP Flow 
-    1. MAC of Device  ->  "DHCP Disccover" -> Broadcast to identify the DHCP Server
-    2. DHCP Server IP -> "DHCP Offer" -> Mac of Device ("DHCP Server on the network receives the Ethernet broadcast and offers an IP")
-    3. PC accets the IP address offered by the DHCP server 
-    4. Mac of Device -> "DHCP Request" -> "Braodcast"
-    5. Maco of Device <- "DHCP Ack"
-- 
+1. Client broadcasts a **DHCP Discover** to find a DHCP server
+2. DHCP server responds with a **DHCP Offer** (proposed IP address)
+3. Client accepts with a **DHCP Request** (broadcast)
+4. DHCP server confirms with a **DHCP Ack**
