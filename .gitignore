@@ -1,2 +1,4 @@
 
 **/venv/
+boxes/working_dir/*
+boxes/working_dir
