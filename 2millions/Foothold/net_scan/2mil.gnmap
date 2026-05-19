@@ -1,0 +1,4 @@
+# Nmap 7.99 scan initiated Thu May 14 22:17:14 2026 as: /usr/lib/nmap/nmap -A -T4 -oA 2mil 10.129.33.129
+Host: 10.129.33.129 ()	Status: Up
+Host: 10.129.33.129 ()	Ports: 22/open/tcp//ssh//OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)/, 80/open/tcp//http//nginx/	Ignored State: closed (998)	OS: Linux 5.0 - 5.14|MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3)	Seq Index: 262	IP ID Seq: All zeros
+# Nmap done at Thu May 14 22:17:25 2026 -- 1 IP address (1 host up) scanned in 10.66 seconds
