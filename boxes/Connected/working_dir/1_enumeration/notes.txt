@@ -1,0 +1,9 @@
+Versions:
+
+FreePBX 16.0.40.7 is licensed under the GPL
+
+... Known vulnerability out there for that:
+
+https://sploitus.com/exploit?id=C6B5D6BD-CFEC-571A-B766-B82261AE3DD8
+
+
